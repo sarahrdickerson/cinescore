@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
+import Link from "next/link";
 
 type VideoEditorHeroMockProps = {
   title?: string;
@@ -60,21 +61,23 @@ export default function VideoEditorHeroMock({
                     </p>
 
                     <div className="mt-5 flex flex-wrap items-center gap-2">
-                      <Button
-                        size="lg"
-                        className="relative rounded-xl px-6 shadow-md shadow-violet-500/30 ring-2 ring-violet-500/35 transition hover:shadow-violet-500/40 hover:ring-violet-500/45"
-                      >
-                        {primaryCta}
-                        <HugeiconsIcon
-                          icon={ArrowRight01Icon}
-                          className="ml-2 h-5 w-5"
-                        />
-                        {/* subtle “glow” for prevalence */}
-                        <span
-                          aria-hidden="true"
-                          className="pointer-events-none absolute -inset-1 -z-10 rounded-xl bg-violet-500/15 blur-md"
-                        />
-                      </Button>
+                      <Link href="/questionnaire">
+                        <Button
+                          size="lg"
+                          className="relative rounded-xl px-6 shadow-md shadow-violet-500/30 ring-2 ring-violet-500/35 transition hover:shadow-violet-500/40 hover:ring-violet-500/45"
+                        >
+                          {primaryCta}
+                          <HugeiconsIcon
+                            icon={ArrowRight01Icon}
+                            className="ml-2 h-5 w-5"
+                          />
+                          {/* subtle “glow” for prevalence */}
+                          <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute -inset-1 -z-10 rounded-xl bg-violet-500/15 blur-md"
+                          />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
 
