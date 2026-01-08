@@ -42,10 +42,10 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
 
       <header className="sticky top-0 z-10 w-full p-4 flex flex-row items-baseline gap-6 justify-between">
         {/* Name + Navigation */}
-        <div className="flex flex-row flex-1 items-baseline gap-8">
+        <div className="flex flex-row flex-1 items-center gap-8">
           <h1 className="text-2xl font-bold">cinescore</h1>
           {/* Navigation Tabs */}
-          <nav className="flex flex-row items-baseline">
+          <nav className="flex flex-row items-center">
             <ul className="flex flex-row gap-4">
               {tabs.map((tab) => (
                 <li key={tab.href}>
@@ -91,7 +91,7 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </DropdownMenu>
         </div>
       </header>
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 px-4">{children}</div>
     </div>
   );
 };

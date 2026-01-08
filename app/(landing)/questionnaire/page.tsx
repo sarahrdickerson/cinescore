@@ -33,7 +33,7 @@ const QuestionnairePage = () => {
           timestamp: Date.now(),
         })
       );
-      router.push("/dashboard");
+      router.push("/mixer");
     } else {
       setCurrentStep((prev) => prev + 1);
     }
