@@ -1,4 +1,5 @@
 "use client";
+import { ModeToggle } from "@/components/mode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -8,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { Moon02Icon } from "@hugeicons/core-free-icons";
+import { Logout01Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -16,11 +17,16 @@ import React, { useState } from "react";
 const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const tabs = [{ label: "mixer", href: "/dashboard" }];
   const [selectedTab, setSelectedTab] = useState(tabs[0].href);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    // Add logic to actually toggle dark mode (e.g., toggle class on document)
+  const handleLogout = () => {
+    // Add your logout logic here
+    // Examples:
+    // - Clear localStorage/sessionStorage
+    // - Call logout API
+    // - Redirect to login page
+    console.log("Logging out...");
+    localStorage.clear();
+    window.location.href = "/landing";
   };
 
   return (
@@ -60,34 +66,30 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </nav>
         </div>
 
-        {/* Avatar menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem
-              onClick={toggleDarkMode}
-              className="flex items-center gap-2 cursor-pointer"
-            >
-              <HugeiconsIcon
-                icon={Moon02Icon}
-                strokeWidth={2}
-                className={cn(
-                  "h-4 w-4 transition-colors",
-                  isDarkMode && "fill-blue-500 stroke-blue-500"
-                )}
-              />
-              <span>Dark Mode</span>
-              {isDarkMode && (
-                <span className="ml-auto text-xs text-blue-500">✓</span>
-              )}
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {/* Right side menu */}
+        <div className="flex flex-row items-center gap-4">
+          <ModeToggle />
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem
+                onClick={handleLogout}
+                className="flex items-center gap-2 cursor-pointer text-destructive focus:text-destructive"
+              >
+                <HugeiconsIcon icon={Logout01Icon} className="h-4 w-4" />
+                <span>Logout</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </header>
       <div className="relative z-10">{children}</div>
     </div>
